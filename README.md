@@ -43,3 +43,25 @@ El ejecutable generado queda en:
 ```bash
 bin/Debug/ExMetodosVirtuales.exe
 ```
+
+## Parte 2.a: trazo rojo
+
+Se modifico el color del lapiz utilizado para dibujar las figuras:
+
+```csharp
+Pen pen = new Pen(Color.Red);
+```
+
+Luego se recompilo el proyecto en Ubuntu con Mono:
+
+```bash
+xbuild ExMetodosVirtuales.sln /p:Configuration=Debug /p:Platform=x86
+```
+
+Resultado de la recompilacion:
+
+![Recompilacion con trazo rojo](capturas/trazo-rojo-compilacion.png)
+
+Ejecucion del programa con las figuras en trazo rojo:
+
+![Figuras con trazo rojo](capturas/trazo-rojo-ejecucion.png)
