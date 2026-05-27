@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 # SharpDevelop 5.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExMetodosVirtuales", "ExMetodosVirtuales\ExMetodosVirtuales.csproj", "{9BE6DF97-94E5-4F2E-8974-8BAFA9F7EF59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExMetodosVirtuales", "ExMetodosVirtuales.csproj", "{9BE6DF97-94E5-4F2E-8974-8BAFA9F7EF59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
