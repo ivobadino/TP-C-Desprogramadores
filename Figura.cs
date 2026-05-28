@@ -62,4 +62,39 @@ namespace Figuras
             graphics.DrawEllipse(pen,x,y, radio, radio);
         }
     }
+
+    public class TrianguloIsosceles : Figura
+    {
+        protected int ancho;
+        protected int alto;
+
+        // Constructor
+        public TrianguloIsosceles(int ancho, int alto)
+        {
+            this.ancho = ancho;
+            this.alto = alto;
+        }
+
+        public override void Dibujar(Pen pen, Graphics graphics, int x, int y)
+        {
+            Point[] points = new Point[3]
+            {
+                new Point(x + ancho / 2, y),
+                new Point(x, y + alto),
+                new Point(x + ancho, y + alto)
+            };
+
+            graphics.DrawPolygon(pen, points);
+        }
+    }
+
+    public class TrianguloEquilatero : TrianguloIsosceles
+    {
+        // Constructor. Un triangulo equilatero tiene todos sus lados iguales.
+        public TrianguloEquilatero(int lado)
+            : base(lado, (int)(Math.Sqrt(3) / 2 * lado))
+        {
+        }
+    }
+
 }

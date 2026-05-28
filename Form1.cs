@@ -14,12 +14,17 @@ namespace Figuras
         public Form1()
         {
             InitializeComponent();
+            this.ClientSize = new Size(900, 350);
+            this.pictureBox1.Size = new Size(750, 280);
+            this.dibujarButton.Location = new Point(800, 130);
 
-            figuras = new Figura[3]
+            figuras = new Figura[5]
             {
                 new Circulo(30),
                 new Rectangulo(60, 80),
                 new Cuadrado(110),
+                new TrianguloIsosceles(140, 160),
+                new TrianguloEquilatero(180),
             };
         }
 
@@ -46,23 +51,24 @@ namespace Figuras
         private void button1_Click(object sender, EventArgs e)
         {
             Graphics gr = pictureBox1.CreateGraphics();
+            gr.Clear(pictureBox1.BackColor);
 
-            Color[] colores = new Color[3]
+            Color[] colores = new Color[figuras.Length];
+
+            for (int i = 0; i < colores.Length; i++)
             {
-                ColorAleatorio(),
-                ColorAleatorio(),
-                ColorAleatorio(),
-            };
-
-            int separacion = 120;
-
-        for (int i = 0; i < figuras.Length; i++)
-        {
-            using (Pen pen = new Pen(colores[i]))
-            {
-                figuras[i].Dibujar(pen, gr, i * separacion, 50);
+                colores[i] = ColorAleatorio();
             }
-        }
+
+            int separacion = 140;
+
+            for (int i = 0; i < figuras.Length; i++)
+            {
+                using (Pen pen = new Pen(colores[i]))
+                {
+                    figuras[i].Dibujar(pen, gr, i * separacion, 50);
+                }
+            }
         }
     }
 }
