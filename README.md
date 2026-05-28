@@ -65,3 +65,30 @@ Resultado de la recompilacion:
 Ejecucion del programa con las figuras en trazo rojo:
 
 ![Figuras con trazo rojo](capturas/trazo-rojo-ejecucion.png)
+
+## Parte 2.b: colores distintos
+
+Se agrego un color distinto para cada figura, manteniendo el recorrido general del arreglo:
+
+```csharp
+Color[] colores = new Color[3]
+{
+    Color.Red,
+    Color.Blue,
+    Color.Green,
+};
+```
+
+Luego se recompilo el proyecto en Ubuntu con Mono:
+
+```bash
+xbuild ExMetodosVirtuales.sln /p:Configuration=Debug /p:Platform=x86
+```
+
+Resultado de la recompilacion:
+
+![Recompilacion con colores distintos](capturas/colores-distintos-compilacion.png)
+
+Ejecucion del programa con las figuras en colores distintos:
+
+![Figuras con colores distintos](capturas/colores-distintos-ejecucion.png)
