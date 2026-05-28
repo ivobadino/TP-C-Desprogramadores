@@ -122,3 +122,39 @@ Ejecuciones del programa con colores generados aleatoriamente:
 ![Primera ejecucion con colores aleatorios](capturas/colores-aleatorios-ejecucion-1.png)
 
 ![Segunda ejecucion con colores aleatorios](capturas/colores-aleatorios-ejecucion-2.png)
+
+## Parte 2.c.2: contraste minimo
+
+Se agrego un control simple para evitar colores demasiado claros sobre el fondo blanco.
+Para eso se calcula el brillo del color y se vuelve a generar si supera el limite elegido.
+
+```csharp
+brillo = (int)(0.299 * rojo + 0.587 * verde + 0.114 * azul);
+```
+
+## Parte 2.d: tamanos crecientes
+
+Se modificaron los tamanos de las figuras para que se vean proporcionalmente crecientes de izquierda a derecha:
+
+```csharp
+figuras = new Figura[3]
+{
+    new Circulo(30),
+    new Rectangulo(60, 80),
+    new Cuadrado(110),
+};
+```
+
+Luego se recompilo el proyecto en Ubuntu con Mono:
+
+```bash
+xbuild ExMetodosVirtuales.sln /p:Configuration=Debug /p:Platform=x86
+```
+
+Resultado de la recompilacion:
+
+![Recompilacion con tamanos crecientes](capturas/tamanos-crecientes-compilacion.png)
+
+Ejecucion del programa con tamanos crecientes:
+
+![Figuras con tamanos crecientes](capturas/tamanos-crecientes-ejecucion.png)
