@@ -3,6 +3,11 @@
 
 Trabajo practico de introduccion a C# / .NET usando Mono en Linux.
 
+## Alumnos
+
+- Ivan Badino
+- Jeremias Sebrian
+
 ## Compilacion en Linux con Mono
 
 Para compilar el proyecto se utilizo Ubuntu en WSL y Mono.
@@ -100,10 +105,21 @@ Se agrego un metodo para generar colores aleatorios usando `Random` y `Color.Fro
 ```csharp
 private Color ColorAleatorio()
 {
-    int rojo = random.Next(0, 256);
-    int verde = random.Next(0, 256);
-    int azul = random.Next(0, 256);
-    return Color.FromArgb(rojo, verde, azul);
+    Color color;
+    int brillo;
+
+    do
+    {
+        int rojo = random.Next(0, 256);
+        int verde = random.Next(0, 256);
+        int azul = random.Next(0, 256);
+
+        color = Color.FromArgb(rojo, verde, azul);
+        brillo = (int)(0.299 * rojo + 0.587 * verde + 0.114 * azul);
+    }
+    while (brillo > 180);
+
+    return color;
 }
 ```
 
@@ -137,11 +153,13 @@ brillo = (int)(0.299 * rojo + 0.587 * verde + 0.114 * azul);
 Se modificaron los tamanos de las figuras para que se vean proporcionalmente crecientes de izquierda a derecha:
 
 ```csharp
-figuras = new Figura[3]
+figuras = new Figura[5]
 {
     new Circulo(30),
     new Rectangulo(60, 80),
     new Cuadrado(110),
+    new TrianguloIsosceles(140, 160),
+    new TrianguloEquilatero(180),
 };
 ```
 
@@ -158,3 +176,48 @@ Resultado de la recompilacion:
 Ejecucion del programa con tamanos crecientes:
 
 ![Figuras con tamanos crecientes](capturas/tamanos-crecientes-ejecucion.png)
+
+## Parte 2.e: nuevas figuras
+
+Se agregaron dos nuevas figuras al modelo de clases:
+
+- `TrianguloIsosceles`
+- `TrianguloEquilatero`
+
+Ambas figuras heredan de `Figura` y redefinen el metodo `Dibujar`.
+El triangulo equilatero reutiliza la clase `TrianguloIsosceles`, calculando su altura a partir del lado:
+
+```csharp
+public class TrianguloEquilatero : TrianguloIsosceles
+{
+    public TrianguloEquilatero(int lado)
+        : base(lado, (int)(Math.Sqrt(3) / 2 * lado))
+    {
+    }
+}
+```
+
+Tambien se amplio el arreglo de figuras en `Form1` para dibujar las cinco figuras.
+
+Resultado de la recompilacion:
+
+![Recompilacion con triangulos](capturas/triangulos-compilacion.png)
+
+Ejecucion del programa con las cinco figuras:
+
+![Figuras con triangulos](capturas/triangulos-ejecucion.png)
+
+## Comandos finales
+
+Para compilar en Ubuntu con Mono:
+
+```bash
+cd ~/TP-C-Desprogramadores
+xbuild ExMetodosVirtuales.sln /p:Configuration=Debug /p:Platform=x86
+```
+
+Para ejecutar:
+
+```bash
+mono bin/Debug/ExMetodosVirtuales.exe
+```
