@@ -92,3 +92,33 @@ Resultado de la recompilacion:
 Ejecucion del programa con las figuras en colores distintos:
 
 ![Figuras con colores distintos](capturas/colores-distintos-ejecucion.png)
+
+## Parte 2.c.1: colores aleatorios
+
+Se agrego un metodo para generar colores aleatorios usando `Random` y `Color.FromArgb`:
+
+```csharp
+private Color ColorAleatorio()
+{
+    int rojo = random.Next(0, 256);
+    int verde = random.Next(0, 256);
+    int azul = random.Next(0, 256);
+    return Color.FromArgb(rojo, verde, azul);
+}
+```
+
+Luego se recompilo el proyecto en Ubuntu con Mono:
+
+```bash
+xbuild ExMetodosVirtuales.sln /p:Configuration=Debug /p:Platform=x86
+```
+
+Resultado de la recompilacion:
+
+![Recompilacion con colores aleatorios](capturas/colores-aleatorios-compilacion.png)
+
+Ejecuciones del programa con colores generados aleatoriamente:
+
+![Primera ejecucion con colores aleatorios](capturas/colores-aleatorios-ejecucion-1.png)
+
+![Segunda ejecucion con colores aleatorios](capturas/colores-aleatorios-ejecucion-2.png)
